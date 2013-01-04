@@ -1,0 +1,36 @@
+/* FONT-FACE */
+@import url("font-face/korolev/stylesheet.css");
+@import url("font-face/proximanova/stylesheet.css");
+
+/* Fonts Available :
+
+proxima_nova_rgregular
+proxima_nova_ltbold
+proxima_nova_rgbold
+proxima_nova_thbold
+proxima_nova_ltregular
+
+korolev_mediumregular
+korolev_thinregular
+korolev_boldregular
+korolev_heavyregular
+korolev_lightregular
+*/
+
+/* RESET */
+body, html {padding:0;margin:0;height:100%;width:100%;color:#333;}
+label{display:block;}
+a {text-decoration:none;}
+a:hover {text-decoration:none;}
+h1, h2, h3, h4, h5, h6{margin:0px;padding:0px;}
+
+/* TOOLS */
+.clear {clear:both;}
+.left {float:left !important;}
+.right {float:right !important;}
+.last {margin:0 !important;border:0 !important;}
+
+/* REUSABLE CLASSES */
+.one-third {width:300px; float:left;}
+.two-third {width:600px; float:left;}
+.fullwidth {width:100%; clear:both;}

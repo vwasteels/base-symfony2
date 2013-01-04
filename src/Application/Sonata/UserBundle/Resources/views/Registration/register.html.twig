@@ -1,0 +1,68 @@
+{% extends 'ApplicationSonataUserBundle::layout.html.twig' %}
+
+{% block h1 %}Create your account{% endblock %}
+
+{% block user_content %}
+<form action="{{ path('castlestory_site_create_account', {'promocode': promocode}) }}" {{ form_enctype(form) }} 
+      method="POST" 
+      class="two-columns" novalidate>
+  
+  {% if app.session.hasFlash('success') %}
+    <div class="flash-notice success">
+      <span>{{ app.session.flash('success') }}</span>
+    </div>
+  {% endif %}
+
+  {% if app.session.hasFlash('errors') %}
+    <div class="flash-notice errors">
+      <span>{{ app.session.flash('errors')}}</span>
+    </div>
+  {% endif %}
+  
+  {% if form_errors(form) %}
+  <div class="flash-notice errors">
+    <span>{{ form_errors(form) }}</span>
+  </div>
+  {% endif %}
+  
+  <div class="field">
+    <div class="label">{{ form_label(form.username) }}</div>
+    {{ form_widget(form.username) }}
+    {{ form_errors(form.username) }}
+  </div>
+  
+  <div class="field">
+    <div class="label">{{ form_label(form.email) }}</div>
+    {{ form_widget(form.email) }}
+    {{ form_errors(form.email) }}
+  </div>
+  
+  <div class="field">
+    <div class="label">{{ form_label(form.firstname) }}</div>
+    {{ form_widget(form.firstname) }}
+    {{ form_errors(form.firstname) }}
+  </div>
+  
+  <div class="field">
+    <div class="label">{{ form_label(form.lastname) }}</div>
+    {{ form_widget(form.lastname) }}
+    {{ form_errors(form.lastname) }}
+  </div>
+  
+  <div class="field">
+    <div class="label">{{ form_label(form.plainPassword.first) }}</div>
+    {{ form_widget(form.plainPassword.first) }}
+    {{ form_errors(form.plainPassword.first) }}
+  </div>
+  
+  <div class="field">
+    <div class="label">{{ form_label(form.plainPassword.second) }}</div>
+    {{ form_widget(form.plainPassword.second) }}
+    {{ form_errors(form.plainPassword.second) }}
+  </div>
+  
+  {{ form_widget(form) }}
+
+  <input type="submit" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" />
+</form>
+{% endblock %}

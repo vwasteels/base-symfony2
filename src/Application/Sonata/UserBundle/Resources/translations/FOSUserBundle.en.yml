@@ -1,0 +1,9 @@
+profile.edit.submit: __profile.edit.submit
+registration.submit: __registration.submit
+resetting.email.subject: __resetting.email.subject
+resetting.email.message: __resetting.email.message
+resetting.request.invalid_username: __resetting.request.invalid_username
+resetting.request.submit: __resetting.request.submit
+resetting.reset.submit: __resetting.reset.submit
+security.login.remember_me: __security.login.remember_me
+security.login.submit: __security.login.submit

@@ -1,0 +1,34 @@
+Application\Sonata\UserBundle\Entity\User:
+    
+    constraints:
+    
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: 
+            fields: [username]
+            groups: [registration, profile]
+            
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [email]
+            groups: [registration, profile]
+        
+    properties:
+        
+        email:
+            - NotBlank:
+                groups: [registration, profile]
+            - Email:
+                message: The email "{{ value }}" is not a valid email.
+                groups: [registration, profile]
+            
+        username:
+            - NotBlank: { groups: [registration, profile] }
+            
+        firstname:
+            - NotBlank: { groups: [registration, profile] }
+            
+        lastname:
+            - NotBlank: { groups: [registration, profile] }
+            
+        plainPassword:
+            - NotBlank: { groups: [registration] }
+            - MinLength: {limit: 6, groups: [registration] }
+            - MaxLength: {limit: 30, groups: [registration] }

@@ -1,0 +1,11 @@
+{% extends 'CastleStorySiteBundle::layout.html.twig' %}
+{% block body_class %}{{ parent() }} profile{% endblock %}
+{% block content %}
+  <div class="center" id="user-section">
+    <div class="center-auto" >
+      <img class="top-logo" src="{{ asset('bundles/castlestorysite/images/brickstron_1.png') }}" />
+      <h1>{% block h1 %}{% endblock %}</h1>
+      {% block user_content %}{% endblock %}
+    </div>
+  </div>
+{% endblock content %}

@@ -1,0 +1,330 @@
+<?php
+
+namespace CastleStory\SiteBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+
+class Block
+{
+    
+    // to string option
+    public function __toString() { return $this->title; }
+    public function getLaveledTitle()
+    {
+        $prefix = "";
+        
+        if($this->getParent() != null) {
+          $prefix .= $this->getParent()->getLaveledTitle() .' -> ';
+        }        
+        return $prefix . $this->title;
+    }
+ 
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     */
+    private $created;
+
+    /**
+     * @var \DateTime
+     */
+    private $updated;
+
+    /**
+     * @var string
+     */
+    private $slug;
+
+    /**
+     * @var string
+     */
+    private $title;
+
+    /**
+     * @var string
+     */
+    private $content;
+
+    /**
+     * @var integer
+     */
+    private $lft;
+
+    /**
+     * @var integer
+     */
+    private $rgt;
+
+    /**
+     * @var integer
+     */
+    private $root;
+
+    /**
+     * @var integer
+     */
+    private $lvl;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $children;
+
+    /**
+     * @var \CastleStory\SiteBundle\Entity\Block
+     */
+    private $parent;
+
+    /**
+     * @var \Application\Sonata\MediaBundle\Entity\Gallery
+     */
+    private $gallery;
+
+    /**
+     * @var \Application\Sonata\MediaBundle\Entity\Media
+     */
+    private $featured;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->children = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return Block
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+    
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime 
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return Block
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+    
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime 
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Block
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return Block
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set content
+     *
+     * @param string $content
+     * @return Block
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+    
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return string 
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * Set lft
+     *
+     * @param integer $lft
+     * @return Block
+     */
+    public function setLft($lft)
+    {
+        $this->lft = $lft;
+    
+        return $this;
+    }
+
+    /**
+     * Get lft
+     *
+     * @return integer 
+     */
+    public function getLft()
+    {
+        return $this->lft;
+    }
+
+    /**
+     * Set rgt
+     *
+     * @param integer $rgt
+     * @return Block
+     */
+    public function setRgt($rgt)
+    {
+        $this->rgt = $rgt;
+    
+        return $this;
+    }
+
+    /**
+     * Get rgt
+     *
+     * @return integer 
+     */
+    public function getRgt()
+    {
+        return $this->rgt;
+    }
+
+    /**
+     * Set root
+     *
+     * @param integer $root
+     * @return Block
+     */
+    public function setRoot($root)
+    {
+        $this->root = $root;
+    
+        return $this;
+    }
+
+    /**
+     * Get root
+     *
+     * @return integer 
+     */
+    public function getRoot()
+    {
+        return $this->root;
+    }
+
+    public function setLvl($lvl){$this->lvl = $lvl;return $this;}
+    public function getLvl(){return $this->lvl;}
+    
+    public function addChildren(\CastleStory\SiteBundle\Entity\Block $children){$this->children[] = $children;return $this;}
+    public function removeChildren(\CastleStory\SiteBundle\Entity\Block $children){$this->children->removeElement($children);}
+    public function getChildren(){return $this->children;}
+
+    public function setParent(\CastleStory\SiteBundle\Entity\Block $parent = null){$this->parent = $parent;return $this;}
+    public function getParent(){return $this->parent;}
+    
+    public function setGallery(\Application\Sonata\MediaBundle\Entity\Gallery $gallery = null){$this->gallery = $gallery;return $this;}
+    public function getGallery(){return $this->gallery;}
+
+    public function setFeatured(\Application\Sonata\MediaBundle\Entity\Media $featured = null){$this->featured = $featured;return $this;}
+    public function getFeatured(){return $this->featured;}
+    public function getFeaturedImage(){return $this->featured;}
+    
+    private $display_title;
+    public function setDisplayTitle($displayTitle){$this->display_title = $displayTitle;return $this;}
+    public function getDisplayTitle(){return $this->display_title;}
+    
+    private $enabled;
+    public function setEnabled($enabled){$this->enabled = $enabled;return $this;}
+    public function getEnabled(){return $this->enabled;}
+    
+    /*
+     * show title
+     */
+    function showTitle(){
+      if($this->display_title != '') {
+        return $this->display_title;
+      } else {
+        return $this->title;
+      }
+    }
+}

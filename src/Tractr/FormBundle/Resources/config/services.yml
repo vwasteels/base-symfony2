@@ -1,0 +1,7 @@
+parameters:
+#    tractr_form.example.class: Tractr\FormBundle\Example
+
+services:
+#    tractr_form.example:
+#        class: %tractr_form.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

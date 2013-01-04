@@ -1,0 +1,17 @@
+services:
+  sonata.admin.form.submissions:
+    class: Tractr\FormBundle\Admin\FormAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: Form, label: Submissions }
+    arguments: [ null , Tractr\FormBundle\Entity\Form , SonataAdminBundle:CRUD]
+
+  pdo:
+    class: PDO
+    arguments:
+        - "mysql:host=%database_host%;port=%database_port%;dbname=%database_name%"
+        - %database_user%
+        - %database_password%
+      
+  session.handler.pdo:
+    class:     Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler
+    arguments: [@pdo, %pdo.db_options%]

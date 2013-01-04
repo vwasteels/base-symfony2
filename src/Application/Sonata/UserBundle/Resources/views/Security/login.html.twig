@@ -1,0 +1,44 @@
+{% extends 'ApplicationSonataUserBundle::layout.html.twig' %}
+
+{% block h1 %}Login{% endblock %}
+
+{% block user_content %}
+<form action="{{ path("castlestory_api_check_login") }}" method="post" class="one-column">
+  
+  {% if app.session.hasFlash('success') %}
+    <div class="flash-notice success">
+      <span>{{ app.session.flash('success') }}</span>
+    </div>
+  {% endif %}
+
+  {% if app.session.hasFlash('errors') %}
+    <div class="flash-notice errors">
+      <span>{{ app.session.flash('errors')}}</span>
+    </div>
+  {% endif %}
+  
+  <fieldset>
+    
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+    
+    <div class="field inline-label">
+      <label for="username">USERNAME</label>
+      <input type="text" id="username" name="username" value="{{ last_username }}" required="required" />
+    </div>
+
+    <div class="field inline-label">
+      <label for="password">PASSWORD</label>
+      <input type="password" id="password" name="password" required="required" />
+    </div>
+    
+    <a class="small" tabindex="-1" href="{{ path('fos_user_resetting_request') }}">Forgot Your Password?</a>
+
+    <!--input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+    <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label-->
+
+  </fieldset>
+  
+  <input type="submit" id="_submit" name="submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+
+</form>
+{% endblock user_content %}

@@ -1,0 +1,18 @@
+parameters:
+
+  # mailer
+  mailer_transport: gmail
+  mailer_user: sender@tractr.net
+  mailer_password: 1234%qwer
+
+  # specific
+  locale: en
+  secret: 8e5ea2b811a813a5f1a3520227a79ddbc82dc83d
+  database_path: null
+  
+
+  pdo.db_options:
+      db_table:    session
+      db_id_col:   session_id
+      db_data_col: session_value
+      db_time_col: session_time

@@ -1,0 +1,11 @@
+<?php
+
+namespace Tractr\FormBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+
+class Form
+{
+    
+}

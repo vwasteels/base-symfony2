@@ -1,0 +1,19 @@
+<p class="info">It is easy to get a new one. Please enter your username or email<br />
+  address in the form below and click Send button. We will send a<br />
+  new password to your registered email address.</p>
+<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="new one-column">
+  
+  {% if invalid_username is defined %}
+  <div class="flash-notice errors">
+    <span>{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}, 'FOSUserBundle') }}</span>
+  </div>
+  {% endif %}
+  
+  <fieldset>
+    <div class="field inline-label">
+      <label for="username">USERNAME OR EMAIL</label>
+      <input type="text" id="username" name="username" required="required" />
+    </div>
+    <input type="submit" value="{{ 'resetting.request.submit'|trans({}, 'FOSUserBundle') }}" />
+  </fieldset>
+</form>

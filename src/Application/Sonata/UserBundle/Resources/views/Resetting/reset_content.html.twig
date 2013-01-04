@@ -1,0 +1,23 @@
+<form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST" class="one-column">
+  
+  {% if form_errors(form) %}
+  <div class="flash-notice errors">
+    <span>{{ form_errors(form) }}</span>
+  </div>
+  {% endif %}
+  
+  <div class="field inline-label">
+      {{ form_label(form.new.first) }}
+      {{ form_errors(form.new.first) }}
+      {{ form_widget(form.new.first) }}
+  </div>
+  
+  <div class="field inline-label">
+      {{ form_label(form.new.second) }}
+      {{ form_errors(form.new.second) }}
+      {{ form_widget(form.new.second) }}
+  </div>
+  
+  {{ form_rest(form) }}  
+  <input type="submit" value="{{ 'resetting.reset.submit'|trans({}, 'FOSUserBundle') }}" />
+</form>

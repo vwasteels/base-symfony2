@@ -1,0 +1,4 @@
+#RewriteEngine on
+#RewriteCond %{HTTP_HOST} ^http://dev-castlestory.aws.af.cm/$ [NC,OR]
+#RewriteCond %{REQUEST_URI} !web/
+#RewriteRule (.*) /web/$1 [L]

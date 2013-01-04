@@ -1,0 +1,3 @@
+tractr_form_homepage:
+    pattern:  /
+    defaults: { _controller: TractrFormBundle:Default:index }

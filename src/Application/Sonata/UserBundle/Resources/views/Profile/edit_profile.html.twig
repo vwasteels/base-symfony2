@@ -1,0 +1,58 @@
+{% extends 'ApplicationSonataUserBundle::layout.html.twig' %}
+{% block h1 %}My Account{% endblock %}
+{% block user_content %}
+<form action="{{ path('castlestory_api_edit_profile') }}" method="POST" class="two-columns" novalidate>
+
+  {% if app.session.hasFlash('success') %}
+    <div class="flash-notice success">
+      <span>{{ app.session.flash('success') }}</span>
+    </div>
+  {% endif %}
+
+  {% if app.session.hasFlash('notice') %}
+    <div class="flash-notice notice">
+      <span>{{ app.session.flash('notice')}}</span>
+    </div>
+  {% endif %}
+  
+  {% if app.session.hasFlash('errors') %}
+    <div class="flash-notice errors">
+      <span>{{ app.session.flash('errors')}}</span>
+    </div>
+  {% endif %}
+  
+  {{ form_errors(form) }}
+
+  <div class="field">
+    <div class="label">{{ form_label(form.username) }}</div>
+    {{ form_widget(form.username) }}
+    {{ form_errors(form.username) }}
+  </div>
+  
+  <div class="field">
+    <div class="label">{{ form_label(form.email) }}</div>
+    {{ form_widget(form.email) }}
+    {{ form_errors(form.email) }}
+  </div>
+  
+  <div class="field">
+    <div class="label">{{ form_label(form.firstname) }}</div>
+    {{ form_widget(form.firstname) }}
+    {{ form_errors(form.firstname) }}
+  </div>
+  
+  <div class="field">
+    <div class="label">{{ form_label(form.lastname) }}</div>
+    {{ form_widget(form.lastname) }}
+    {{ form_errors(form.lastname) }}
+  </div>
+  
+  <div class="field">
+    <div class="label"><label for="change-password">Password</label></div>
+    <a name="change-password" class="submit" href="{{ path('castlestory_api_change_password') }}">Change password</a>
+  </div>
+
+  {{ form_rest(form) }}
+  <input type="submit" name="submit" value="Save" />
+</form>
+{% endblock %}

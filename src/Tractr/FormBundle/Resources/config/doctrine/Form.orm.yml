@@ -1,0 +1,27 @@
+Tractr\FormBundle\Entity\Form:
+
+    type: entity
+    repositoryClass: Tractr\FormBundle\Repository\FormRepository
+    table: form
+
+
+    id:
+        id:
+            name: id
+            type: integer
+            generator: { strategy: AUTO }
+
+
+    fields:
+
+        # Gedmo : timestampable
+        created:
+          type: datetime
+          gedmo:
+            timestampable:
+              on: create
+        updated:
+          type: datetime
+          gedmo:
+            timestampable:
+              on: update
